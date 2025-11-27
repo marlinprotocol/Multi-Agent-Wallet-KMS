@@ -1,0 +1,14 @@
+# Ignore everything...
+*
+
+# ...except the project sources and core metadata.
+!.gitignore
+!README.md
+!Cargo.toml
+!Cargo.lock
+!docker-compose.yml
+!Dockerfile
+!.env.config.example
+!.env.secrets.example
+!src/
+

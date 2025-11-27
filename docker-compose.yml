@@ -1,0 +1,8 @@
+services:
+  signing-server:
+    image: ayushranjan123/signing-server:latest
+    network_mode: host
+    restart: unless-stopped
+    env_file:
+      - "/init-params/config.env"
+      - "/init-params/secrets.env"
