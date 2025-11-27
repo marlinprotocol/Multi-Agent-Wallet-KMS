@@ -11,4 +11,4 @@
 !.env.config.example
 !.env.secrets.example
 !src/
-
+!src/**
