@@ -19,13 +19,13 @@ Coordinating a fleet of ERC-8004-style AI agents is hard when each bot needs dir
 
 ## Features
 
-- 🔐 **TEE-only private key** derived via contract KMS; no agent ever sees raw key material.
-- 🧾 **Onboarding API** lets each AI/automation agent mint a scoped ID + API key with a custom spend cap.
-- 🛡️ **Access control & throttling** enforce per-agent allowances before any tx gets signed.
-- 🔑 **Deterministic API keys** use the enclave-only KMS secret plus per-agent salt so keys are non-invertible and revocable.
-- 🤖 **Strategy instruction queue** lets specialized agents (Aave, DEX, hedging, etc.) submit playbooks for later execution.
-- 📊 **Ledger awareness** exposes on-chain balance/nonce while tracking agent-level spend history to inform decisioning.
-- 📡 **Simple HTTP interface** works with `curl`, Postman, or autonomous bots coordinating over ERC-8004 flows.
+- **TEE-only private key** derived via contract KMS; no agent ever sees raw key material.
+- **Onboarding API** lets each AI/automation agent mint a scoped ID + API key with a custom spend cap.
+- **Access control & throttling** enforce per-agent allowances before any tx gets signed.
+- **Deterministic API keys** use the enclave-only KMS secret plus per-agent salt so keys are non-invertible and revocable.
+- **Strategy instruction queue** lets specialized agents (Aave, DEX, hedging, etc.) submit playbooks for later execution.
+- **Ledger awareness** exposes on-chain balance/nonce while tracking agent-level spend history to inform decisioning.
+- **Simple HTTP interface** works with `curl`, Postman, or autonomous bots coordinating over ERC-8004 flows.
 
 ## Example multi-agent flow
 
@@ -206,11 +206,11 @@ Response (`201 Created`):
 >
 > Provide `strategy_tag` (e.g., `aave-rebalancer`, `dex-arb`) to make it easier to audit which agent issued later instructions; it is echoed back via `/users/{id}/status`.
 
-### 🔐 `GET /users/{user_id}/status`
+### `GET /users/{user_id}/status`
 Header: `X-Api-Key: <api_key>`.
 Returns spend history, remaining allowance, and deposit address for the caller.
 
-### 🔐 `POST /withdraw`
+### `POST /withdraw`
 
 Header: `X-Api-Key`. Example request:
 
@@ -248,7 +248,7 @@ Response (`200 OK`):
 }
 ```
 
-### 🔐 `POST /instructions/strategy`
+### `POST /instructions/strategy`
 
 Header: `X-Api-Key`. Allows a strategist to queue a DeFi action for later automated execution.
 
@@ -300,6 +300,3 @@ Response (`202 Accepted`) confirms the instruction was logged.
 
 - Implement automatic execution of queued strategy instructions (e.g., integrate with on-chain protocols or DEX routers).
 
-## License
-
-MIT (or inherit from this repository’s chosen license if defined elsewhere).
